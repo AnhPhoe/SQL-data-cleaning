@@ -70,6 +70,7 @@ WHERE ROWID NOT IN (
 );
 ```
 The result: The table is from 2010 rows to 2000 rows that removed 10 rows duplicate 
+## Cleaning data
 #### full_name column
 The column will contain all upper case names with no extra whitespace at the beginning or end.
 ```SQL
