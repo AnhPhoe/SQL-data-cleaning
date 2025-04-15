@@ -41,6 +41,34 @@ CREATE TABLE club_member_info_cleaned (
 INSERT INTO club_member_info_cleaned
 SELECT * FROM club_member_info;
 ```
+### Check duplicate value
+```SQL
+SELECT full_name, COUNT(*)
+FROM club_member_info_cleaned
+GROUP BY full_name
+HAVING COUNT(*) > 1;
+```
+|full_name|COUNT(*)|
+|---------|--------|
+|ERWIN HUXTER|3|
+|GARRICK REGLAR|2|
+|GEORGES PREWETT|2|
+|HASKELL BRADEN|2|
+|MADDIE MORRALLEE|2|
+|NICKI FILLISKIRK|2|
+|OBED MACCAUGHEN|2|
+|SEYMOUR LAMBLE|2|
+|TAMQRAH DUNKERSLEY|2|
+After that, duplicate value will be removed.
+```SQL
+DELETE FROM club_member_info_cleaned
+WHERE ROWID NOT IN (
+    SELECT MIN(ROWID)
+    FROM club_member_info_cleaned
+    GROUP BY full_name
+);
+```
+The result: The table is from 2010 rows to 2000 rows that removed 10 rows duplicate 
 #### full_name column
 The column will contain all upper case names with no extra whitespace at the beginning or end.
 ```SQL
