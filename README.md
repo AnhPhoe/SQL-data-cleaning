@@ -59,6 +59,7 @@ HAVING COUNT(*) > 1;
 |OBED MACCAUGHEN|2|
 |SEYMOUR LAMBLE|2|
 |TAMQRAH DUNKERSLEY|2|
+
 After that, duplicate value will be removed.
 ```SQL
 DELETE FROM club_member_info_cleaned
